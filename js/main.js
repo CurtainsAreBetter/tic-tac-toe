@@ -119,7 +119,9 @@ resetBtn.addEventListener('click', () => {
     winMessage.innerText = '';
     specialMessage.innerText = '';
     // can't think of a better way, I'm sure there is one
-    entireMoveMessage.innerHTML = "The current move goes to: <span id='current-player'>X</span>" 
+    //entireMoveMessage.innerHTML = "The current move goes to: <span id='current-player'>X</span>"
+    entireMoveMessage.nodeValue = 'The Current move goes to:';
+    moveMessage.innerText = 'X'; 
 });
 
 // Game 'buttons'
