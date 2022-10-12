@@ -22,6 +22,7 @@
 </head>
 <body>
 	<main>
+		<button id='reset'>Reset</button>
 		<section class='game-board'>
 			<!-- id is yx coords: 2d array-->
 			<div class="box" id='00'></div>
@@ -33,6 +34,11 @@
 			<div class="box" id='20'></div>
 			<div class="box" id='21'></div>
 			<div class="box" id='22'></div>
+		</section>
+		<section class='messages'>
+			<h1 id='winner'></h1>
+			<h2 id='entire-cur-play'>The current move goes to: <span id='current-player'>X</span></h2>
+			<h3 id='special'></h3>
 		</section>
 	</main>
 	
