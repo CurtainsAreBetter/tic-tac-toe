@@ -93,3 +93,18 @@ class Game{
         return false; // nobody has won yet
     }
 }
+
+// Running the game
+const game = new Game();
+let gameOver = false;
+
+// HTML nodes
+// Reset btn
+const resetBtn = document.querySelector('#reset');
+// Boxes
+const boxes = document.querySelectorAll('.box');
+// Messages
+const winMessage = document.querySelector('#winner');
+const entireMoveMessage = document.querySelector('#entire-cur-play');
+const moveMessage = document.querySelector('#current-player');
+const specialMessage = document.querySelector('#special');
