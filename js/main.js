@@ -109,6 +109,19 @@ const entireMoveMessage = document.querySelector('#entire-cur-play');
 const moveMessage = document.querySelector('#current-player');
 const specialMessage = document.querySelector('#special');
 
+// Reset btn event listener
+// I always miss something when it comes to resets
+resetBtn.addEventListener('click', () => {
+    game.reset();
+    gameOver = false;
+    boxes.forEach(box => box.innerText = '');
+
+    winMessage.innerText = '';
+    specialMessage.innerText = '';
+    // can't think of a better way, I'm sure there is one
+    entireMoveMessage.innerHTML = "The current move goes to: <span id='current-player'>X</span>" 
+});
+
 // Game 'buttons'
 boxes.forEach(box => {
     box.addEventListener('click', e => {
