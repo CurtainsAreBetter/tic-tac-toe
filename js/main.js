@@ -129,17 +129,20 @@ boxes.forEach(box => {
             return null;
         }
         specialMessage.innerText = '';
+        // see choord explanation at the top of section.game-board in index.html
         const id = e.target.id;
         yCoord = id[0];
         xCoord = id[1];
         console.debug(xCoord, yCoord);
 
+        // Player changes when make a move is successful 
+        // so in order to place the correct piece, the currentPlayer is briefly saved
         let player = game.currentPlayer;
         if(game.makeMove(yCoord, xCoord)) {
             box.innerText = player;
             moveMessage.innerText = game.currentPlayer;
         } else {
-            // bad move
+            // bad move was made
             specialMessage.innerText = `Bad Move, ${game.currentPlayer} pick a different position`;
         }
         console.debug(game.board);
