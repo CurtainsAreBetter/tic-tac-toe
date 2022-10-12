@@ -118,10 +118,9 @@ resetBtn.addEventListener('click', () => {
 
     winMessage.innerText = '';
     specialMessage.innerText = '';
-    // can't think of a better way, I'm sure there is one
-    //entireMoveMessage.innerHTML = "The current move goes to: <span id='current-player'>X</span>"
     entireMoveMessage.nodeValue = 'The Current move goes to:';
     moveMessage.innerText = 'X'; 
+    entireMoveMessage.classList.remove('hidden');
 });
 
 // Game 'buttons'
@@ -155,7 +154,7 @@ boxes.forEach(box => {
             if (result) {
                 gameOver = true;
                 winMessage.innerText = result;
-                entireMoveMessage.innerText = '';
+                entireMoveMessage.classList.add('hidden');
             }
         }
     });
