@@ -108,3 +108,37 @@ const winMessage = document.querySelector('#winner');
 const entireMoveMessage = document.querySelector('#entire-cur-play');
 const moveMessage = document.querySelector('#current-player');
 const specialMessage = document.querySelector('#special');
+
+// Game 'buttons'
+boxes.forEach(box => {
+    box.addEventListener('click', e => {
+        if (gameOver) {
+            return null;
+        }
+        specialMessage.innerText = '';
+        const id = e.target.id;
+        yCoord = id[0];
+        xCoord = id[1];
+        console.debug(xCoord, yCoord);
+
+        let player = game.currentPlayer;
+        if(game.makeMove(yCoord, xCoord)) {
+            box.innerText = player;
+            moveMessage.innerText = game.currentPlayer;
+        } else {
+            // bad move
+            specialMessage.innerText = `Bad Move, ${game.currentPlayer} pick a different position`;
+        }
+        console.debug(game.board);
+
+        // Check for a winner
+        if (game.pieceCount >= 5) {
+            const result = game.checkForWin();
+            if (result) {
+                gameOver = true;
+                winMessage.innerText = result;
+                entireMoveMessage.innerText = '';
+            }
+        }
+    });
+});
