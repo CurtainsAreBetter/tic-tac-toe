@@ -114,7 +114,10 @@ const specialMessage = document.querySelector('#special');
 resetBtn.addEventListener('click', () => {
     game.reset();
     gameOver = false;
-    boxes.forEach(box => box.innerText = '');
+    boxes.forEach(box => {
+        box.innerText = ''
+        box.classList.remove('placed');
+    });
 
     winMessage.innerText = '';
     specialMessage.innerText = '';
@@ -141,6 +144,7 @@ boxes.forEach(box => {
         let player = game.currentPlayer;
         if(game.makeMove(yCoord, xCoord)) {
             box.innerText = player;
+            box.classList.add('placed');
             moveMessage.innerText = game.currentPlayer;
         } else {
             // bad move was made

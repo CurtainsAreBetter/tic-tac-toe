@@ -86,4 +86,11 @@ main {
 /******************************************
 /* ADDITIONAL STYLES
 /*******************************************/
+.box {
+  color: rgba(0, 0, 0, 0);
+  transition: color 0.4s ease-in-out;
+}
 
+.placed {
+  color: rgb(0, 0, 0, 1);
+}
