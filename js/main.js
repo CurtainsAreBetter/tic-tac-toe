@@ -29,7 +29,7 @@ class Game{
     // doing y, x because that's the order when it comes to a 2d array
 
     // returns true if plcaed, false if unable to place
-    #_placePiece(y, x) {
+    #placePiece(y, x) {
         // check if place is already taken
         if(this.board[y][x]){
             return false;
@@ -39,11 +39,11 @@ class Game{
         }
     }
     makeMove(y, x) {
-        if (this.currentPlayer == 'X' && this.#_placePiece(y, x)){
+        if (this.currentPlayer == 'X' && this.#placePiece(y, x)){
             // x was placed by the function in the if statement
             this.currentPlayer = 'O';
             return true;
-        } else if(this.currentPlayer == 'O' && this.#_placePiece(y, x)){
+        } else if(this.currentPlayer == 'O' && this.#placePiece(y, x)){
             this.currentPlayer = 'X';
             return true;
         } else {
@@ -53,35 +53,35 @@ class Game{
     }
     
     // utility to check if an array counts as a win
-    #_arrIsWin(arr, piece) {
+    #arrIsWin(arr, piece) {
         return arr.filter(p => p == piece).length == 3;
     }
 
     checkForWin() {
         // Horizontal wins
         for(const row of this.board) {
-            if (this.#_arrIsWin(row, 'X')) {
+            if (this.#arrIsWin(row, 'X')) {
                 return 'X wins';
             } 
-            if (this.#_arrIsWin(row, 'O')) {
+            if (this.#arrIsWin(row, 'O')) {
                 return 'O wins'
             }
         }
         // Vertical wins
         for(let i=0; i<3; i++) {
             const tmpArr = [this.board[0][i], this.board[1][i], this.board[2][i]];
-            if (this.#_arrIsWin(tmpArr, 'X')) return 'X wins';
-            if (this.#_arrIsWin(tmpArr, 'O')) return 'O wins';
+            if (this.#arrIsWin(tmpArr, 'X')) return 'X wins';
+            if (this.#arrIsWin(tmpArr, 'O')) return 'O wins';
         }
         // Diagonal wins
         // \
         const leftToRightDiag = [this.board[0][0], this.board[1][1], this.board[2][2]];
         // /
         const rightToLeftDiag = [this.board[2][0], this.board[1][1], this.board[0][2]];
-        if (this.#_arrIsWin(leftToRightDiag, 'X') || this.#arrIsWin(rightToLeftDiag, 'X')) {
+        if (this.#arrIsWin(leftToRightDiag, 'X') || this.#arrIsWin(rightToLeftDiag, 'X')) {
             return 'X wins';
         }
-        if (this.#_arrIsWin(leftToRightDiag, 'O') || this.#arrIsWin(rightToLeftDiag, 'O')) {
+        if (this.#arrIsWin(leftToRightDiag, 'O') || this.#arrIsWin(rightToLeftDiag, 'O')) {
             return 'O wins';
         }
 
