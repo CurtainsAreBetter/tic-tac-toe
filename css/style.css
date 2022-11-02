@@ -38,7 +38,8 @@ main {
   background: var(--body-color);
 }
 .game-board {
-  box-shadow: 0 0 20px 5px var(--background-color);
+    /* 10px was 5px */
+  box-shadow: 0 0 20px 10px var(--background-color);
   background: var(--background-color);
 }
 .box {
